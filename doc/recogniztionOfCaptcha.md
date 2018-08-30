@@ -1,0 +1,19 @@
+1. 步骤
+  - ![process](process)
+  - 灰度化与二值化
+    - 灰度化：
+      - 目的：Ref:https://www.zhihu.com/question/24453478
+      - 方法：Ref:https://blog.csdn.net/evsqiezi/article/details/7905436
+      - Python 实现： Ref:http://python.jobbole.com/85224/ (注意：cv2.cv不再存在)
+      - opencv 自带的实现转化的方法及原理 https://blog.csdn.net/keith_bb/article/details/53470170 (关于opencv直接的操作)
+    - 二值化：
+      - 概念：一幅图像包括目标物体、背景还有噪声，要想从多值的数字图像中直接提取出目标物体
+      - 分类：
+          - 全局二值化：设定一个全局的阈值T，用T将图像的数据分成两部分：大于T的像素群和小于T的像素群。将大于T的像素群的像素值设定为白色（或者黑色），小于T的像素群的像素值设定为黑色（或者白色）。
+          - 局部二值化：按照一定的规则将整幅图像划分为N个窗口，对这N个窗口中的每一个窗口再按照一个统一的阈值T将该窗口内的像素划分为两部分，进行二值化处理。
+          - 局部自适应二值化：该方法就是在局部二值化的基础之上，将阈值的设定更加合理化。该方法的阈值是通过对该窗口像素的平均值E，像素之间的差平方P，像素之间的均方根值Q等各种局部特征，设定一个参数方程进行阈值的计算，例如：T=a*E+b*P+c*Q，其中a,b,c是自由参数。这样得出来的二值化图像就更能表现出二值化图像中的细节。
+          - Ref:常见二值化方法 https://blog.csdn.net/joeyon1985/article/details/42174381
+          - Ref: OTSU方法（也是本文档采用的方法）https://blog.csdn.net/u010128736/article/details/52801310
+      - Python实现：https://blog.csdn.net/jjddss/article/details/72841141
+    - 去噪：
+      - 关于椒盐噪音 :https://www.cnblogs.com/joyeecheung/p/4264990.html
